@@ -1,4 +1,5 @@
 package com.example;
+// Just a test comment to trigger new workflow
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
