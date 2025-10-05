@@ -25,9 +25,13 @@ jobs:
 
       - name: Run JUnit Tests
         run: mvn test
+      
+      - name: List JUnit reports
+        run: ls -l target/surefire-reports/
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v3
         with:
           name: junit-reports
           path: target/surefire-reports/
+
