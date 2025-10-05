@@ -11,21 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Setup Java
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
+      # Step 3: Build the project
       - name: Build with Maven
         run: mvn -B clean package
 
+      # Step 4: Run JUnit tests
       - name: Run JUnit Tests
         run: mvn test
 
+      # Step 5: Debug - List test report files
+      - name: "Debug: List JUnit reports"
+        run: ls -l target/surefire-reports/
+
+
+      # Step 6: Upload JUnit test reports as artifact
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
         with:
